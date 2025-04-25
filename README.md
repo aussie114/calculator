@@ -1,5 +1,5 @@
 ## calculator  
-![screenshot.png](https://notabug.org/aussie114/calculator/raw/master/data/screenshot.png)  
+![screenshot.png](https://github.com/aussie114/calculator/blob/master/data/screenshot.png)  
 
 ## About  
 A simple GTK calculator
