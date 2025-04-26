@@ -1,7 +1,9 @@
+OBJECTS = $(patsubst src/%.c, build/%.o, $(wildcard src/*.c))
+
 run: build
 	./bin/calculator
 
-build: build/main.o build/gtk_helper_functions.o build/tinyexpr.o
+build: $(OBJECTS)
 	gcc `pkg-config --libs gtk4` -lm build/*.o -o ./bin/calculator
 
 build/main.o: src/main.c
