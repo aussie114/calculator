@@ -8,4 +8,5 @@ A simple GTK calculator
 GTK4
 
 ## Usage  
-This program evaluates strings as mathamatical expressions using the [tinyexpr library](https://github.com/codeplea/tinyexpr), you make also use functions from the C math library like sqrt()
+This program evaluates strings as mathamatical expressions using the [tinyexpr library](https://github.com/codeplea/tinyexpr)  
+Through tinyexpr the program supports math functions abs, acos, asin, atan, atan2, ceil, cos, cosh, exp, floor, ln, log, log10, pow, sin, sinh, sqrt, tan and tanh
