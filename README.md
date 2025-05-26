@@ -2,7 +2,7 @@
 ![screenshot.png](https://github.com/aussie114/calculator/blob/master/data/screenshot.png)  
 
 ## About  
-A simple calculator
+A CLI calculator
 
 ## Dependencies  
 Readline
