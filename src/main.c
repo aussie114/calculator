@@ -12,6 +12,7 @@ int main()
 		
 	while(1)
 	{
+		puts("――――――――――――――――――――――――――――――");
 		input = readline("> ");
 
 		if (!input || strcmp(input, "quit") == 0 || strcmp(input, "q") == 0) break;
@@ -21,7 +22,7 @@ int main()
 				"\033[2K" // Clear
 				"\033[1A" // Move up
 				"\033[2K" // Clear
-				"%s = %g\n\n", input, te_interp(input, 0));
+				"%s = %g\n", input, te_interp(input, 0));
 		free(input);
 	}
 
