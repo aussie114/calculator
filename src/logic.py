@@ -2,9 +2,13 @@
 import gi
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk, Gdk
+import os
 import ctypes
 
-tinyexpr = ctypes.CDLL('lib/libtinyexpr.so')
+script_dir = os.path.dirname(os.path.realpath(__file__))
+lib_path = os.path.join(script_dir, '..', 'lib', 'libtinyexpr.so')
+
+tinyexpr = ctypes.CDLL(lib_path)
 tinyexpr.te_interp.restype = ctypes.c_double
 tinyexpr.te_interp.argtypes = [ctypes.c_char_p, ctypes.POINTER(ctypes.c_void_p)]
 
