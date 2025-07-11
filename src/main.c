@@ -1,8 +1,7 @@
 #include <gtk/gtk.h>
 #include "window.h"
 #include "grid.h"
-#include "input.h"
-#include "output.h"
+#include "calculator.h"
 
 void activate(GtkApplication * app, gpointer user_data)
 {
@@ -10,8 +9,7 @@ void activate(GtkApplication * app, gpointer user_data)
 
 	create_window(app);
 	create_grid();
-	create_output();
-	create_input();
+	create_calculator();
 	gtk_window_present (GTK_WINDOW (window));
 }
 
