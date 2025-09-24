@@ -2,7 +2,8 @@
 ![screenshot.png](https://github.com/aussie114/calculator/blob/master/screenshots/screenshot.png)  
 
 ## About  
-A simple calculator made in Tkinter. 
+A simple calculator made in Tkinter and tinyexpr. 
 
 ## Usage  
-This program evaluates strings as mathamatical expressions, you also have access to functions from the math library like sqrt()  
+This program evaluates strings as mathamatical expressions using the [tinyexpr](https://github.com/codeplea/tinyexpr/) library  
+Through tinyexpr the program supports the math functions abs, acos, asin, atan, atan2, ceil, cos, cosh, exp, floor, ln, log, log10, pow, sin, sinh, sqrt, tan and tanh

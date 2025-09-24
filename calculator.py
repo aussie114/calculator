@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 from tkinter import *
 from tkinter import font
-from math import *
+import ctypes
+
+# Load tinyepr
+te = ctypes.CDLL("./tinyexpr.so")
+te.te_interp.argtypes = [ctypes.c_char_p, ctypes.POINTER(ctypes.c_int)]
+te.te_interp.restype = ctypes.c_double
 
 font_size = 12
 
@@ -50,11 +55,12 @@ class Input(Entry):
 
     def on_text_submitted(self, event):
         expression = self.get()
-        result = 0
-        try:
-            result = eval(expression)
-        except:
-            result = 0
+        result = te.te_interp(expression.encode("utf-8"), None)
+
+        if result.is_integer():
+            result = str(int(result))
+        else:
+            result = str(result)
 
         widgets.output.configure(state="normal")
         widgets.output.insert("end", "%s = %s\n" % (expression, result))
