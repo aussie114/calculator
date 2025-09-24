@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import font
 from math import *
 
-font_size = 15
+font_size = 12
 
 class Widgets:
     pass                                                                                                          
@@ -57,7 +57,7 @@ class Input(Entry):
             result = 0
 
         widgets.output.configure(state="normal")
-        widgets.output.insert("end", "%s = %d\n" % (expression, result))
+        widgets.output.insert("end", "%s = %s\n" % (expression, result))
         widgets.output.see("end")
         widgets.output.configure(state="disabled")
 
