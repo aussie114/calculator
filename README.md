@@ -2,7 +2,7 @@
 ![screenshot.png](https://github.com/aussie114/calculator/blob/master/screenshots/screenshot.png)  
 
 ## About  
-A simple calculator made in Tkinter and tinyexpr. 
+A simple calculator made in tk/tcl and tinyexpr. 
 
 ## Usage  
 This program evaluates strings as mathamatical expressions using the [tinyexpr](https://github.com/codeplea/tinyexpr/) library  

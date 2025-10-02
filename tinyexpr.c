@@ -1,4 +1,4 @@
-//gcc tinyexpr.c -shared -fPIC -lm -o tinyexpr.so
+//gcc tinyexpr.c -shared -fPIC -lm -I/usr/include/tcl -o tinyexpr.so
 
 // SPDX-License-Identifier: Zlib
 /*
@@ -760,4 +760,27 @@ static void pn (const te_expr *n, int depth) {
 
 void te_print(const te_expr *n) {
     pn(n, 0);
+}
+
+
+/************************
+ * tcl calculate funtion *
+ ************************/
+
+#include <tcl.h>
+
+int calculate(ClientData clientData, Tcl_Interp *interp, int argc, const char *argv[]) {
+
+    double result = te_interp(argv[1], NULL);
+
+    Tcl_Obj *result_obj = Tcl_NewDoubleObj(result);
+
+    Tcl_SetObjResult(interp, result_obj);
+
+    return TCL_OK;
+}
+
+int DLLEXPORT Tinyexpr_Init(Tcl_Interp *interp) {
+    Tcl_CreateCommand(interp, "calculate", calculate, NULL, NULL);
+    return TCL_OK;
 }
