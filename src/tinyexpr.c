@@ -1,5 +1,3 @@
-//gcc tinyexpr.c -shared -fPIC -lm -I/usr/include/tcl -o tinyexpr.so
-
 // SPDX-License-Identifier: Zlib
 /*
  * TINYEXPR - Tiny recursive descent parser and evaluation engine in C
@@ -37,40 +35,13 @@ For log = base 10 log do nothing
 For log = natural log uncomment the next line. */
 /* #define TE_NAT_LOG */
 
+#include "tinyexpr.h"
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <limits.h>
-
-typedef struct te_expr {
-    int type;
-    union {double value; const double *bound; const void *function;};
-    void *parameters[1];
-} te_expr;
-
-
-enum {
-    TE_VARIABLE = 0,
-
-    TE_FUNCTION0 = 8, TE_FUNCTION1, TE_FUNCTION2, TE_FUNCTION3,
-    TE_FUNCTION4, TE_FUNCTION5, TE_FUNCTION6, TE_FUNCTION7,
-
-    TE_CLOSURE0 = 16, TE_CLOSURE1, TE_CLOSURE2, TE_CLOSURE3,
-    TE_CLOSURE4, TE_CLOSURE5, TE_CLOSURE6, TE_CLOSURE7,
-
-    TE_FLAG_PURE = 32
-};
-
-typedef struct te_variable {
-    const char *name;
-    const void *address;
-    int type;
-    void *context;
-} te_variable;
-
-void te_free(te_expr *n);
 
 #ifndef NAN
 #define NAN (0.0/0.0)
@@ -760,27 +731,4 @@ static void pn (const te_expr *n, int depth) {
 
 void te_print(const te_expr *n) {
     pn(n, 0);
-}
-
-
-/************************
- * tcl calculate funtion *
- ************************/
-
-#include <tcl.h>
-
-int calculate(ClientData clientData, Tcl_Interp *interp, int argc, const char *argv[]) {
-
-    double result = te_interp(argv[1], NULL);
-
-    Tcl_Obj *result_obj = Tcl_NewDoubleObj(result);
-
-    Tcl_SetObjResult(interp, result_obj);
-
-    return TCL_OK;
-}
-
-int DLLEXPORT Tinyexpr_Init(Tcl_Interp *interp) {
-    Tcl_CreateCommand(interp, "calculate", calculate, NULL, NULL);
-    return TCL_OK;
 }
