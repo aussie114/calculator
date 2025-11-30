@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <stdlib.h>
@@ -8,20 +9,22 @@
 \033[A move up
 \033[2K clear line
 */
-int main(void)
+int main(int argc, char *argv[])
 {
-	puts("\nThis program evaluates your input\nas a mathamatical expression\n\nEnter an expression or q to quit...\n\n");
+	if (argc > 1)
+	{
+		printf("%g\n", te_interp(argv[1], NULL));
+		return 0;
+	}
+	puts("\nThis program evaluates your input\nas a mathamatical expression\n\nEnter an expression or q to quit....\n\n");
 	char * input;
 
 	while(1)
 	{
 		input = readline("> ");
-		if (input[0] == 'q') {break;}
-		printf(
-			"\033[A"  // move
-			"\033[2K" // clear
-			"\033[A"  // move
-			"%s = %g\n\n", input, te_interp(input, NULL));
+
+		if (input[0] == 'q') { break; }
+		printf("\033[A\033[2K\033[A%s = %g\n\n", input, te_interp(input, NULL));
 		add_history(input);
 		free(input);
 	}

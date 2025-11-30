@@ -1,11 +1,11 @@
 ## Example
-![screenshot.png](https://github.com/aussie114/calculator/blob/master/screenshots/screenshot.png)  
+![screenshot_001.png](https://github.com/aussie114/calculator/blob/master/screenshots/screenshot_001.png)  
 
 ## Dependencies  
 readline math  
 
 ## About  
-A simple calculator using tinyexpr. 
+A simple calculator using tinyexpr with programs to calcualte percentages. 
 
 ## Usage  
 This program evaluates strings as mathamatical expressions using the [tinyexpr](https://github.com/codeplea/tinyexpr/) library  
